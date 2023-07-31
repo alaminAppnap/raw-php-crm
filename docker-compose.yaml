@@ -9,7 +9,7 @@ services:
     image: alamin899/crm:v1.x
     container_name: crm_php
     ports:
-      - "80:80"
+      - "8088:80"
     networks:
       - crm
 

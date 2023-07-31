@@ -1,0 +1,31 @@
+version: "3"
+
+networks:
+  crm:
+    driver: bridge
+
+services:
+  crm_php:
+    image: alamin899/crm:v1.x
+    container_name: crm_php
+    ports:
+      - "80:80"
+    networks:
+      - crm
+
+  crm_mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    container_name: amarpet_mysql
+    tty: true
+    ports:
+      - "3381:3306"
+    environment:
+      MYSQL_DATABASE: "crm"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - crm

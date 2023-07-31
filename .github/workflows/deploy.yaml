@@ -1,0 +1,21 @@
+name: Deploy application on server
+
+on:
+  push:
+    branches:
+      - v1.x
+
+jobs:
+  build-on-self-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /var/www/crm
+            git pull origin v1.x

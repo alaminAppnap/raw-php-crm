@@ -16,7 +16,7 @@ services:
   crm_mysql:
     image: mysql:8.0
     restart: unless-stopped
-    container_name: amarpet_mysql
+    container_name: crm_mysql
     tty: true
     ports:
       - "3381:3306"
